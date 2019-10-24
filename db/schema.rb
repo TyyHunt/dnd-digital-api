@@ -10,9 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_09_06_181318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.integer "level"
+    t.integer "health"
+    t.integer "str"
+    t.integer "dex"
+    t.integer "con"
+    t.integer "int"
+    t.integer "wis"
+    t.integer "cha"
+    t.string "race"
+    t.string "klass"
+    t.string "weapon"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "klasses", force: :cascade do |t|
+    t.string "name"
+    t.string "img_url"
+    t.integer "hit_die"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "races", force: :cascade do |t|
+    t.string "name"
+    t.string "img_url"
+    t.integer "speed"
+    t.string "bonus"
+    t.string "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.string "password_confirmation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.string "name"
+    t.string "damage"
+    t.string "dmg_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
